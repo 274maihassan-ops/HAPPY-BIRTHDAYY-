@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday ☕🎉</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: radial-gradient(circle at top, #0d1b2a, #1b263b, #000);
+      font-family: 'Poppins', sans-serif;
+      color: #e0f7fa;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #00b4d8;
+      margin-bottom: 0.3em;
+      animation: fadeInDown 1.5s ease-in-out;
+      z-index: 2;
+    }
+
+    p {
+      font-size: 1.3em;
+      max-width: 600px;
+      color: #caf0f8;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1.5s;
+      z-index: 2;
+    }
+
+    .coffee {
+      font-size: 4em;
+      margin: 15px 0;
+      animation: float 3s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    button {
+      margin-top: 25px;
+      background: #0077b6;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: 0.3s;
+      z-index: 2;
+    }
+
+    button:hover {
+      background: #00b4d8;
+      transform: scale(1.05);
+    }
+
+    .note {
+      opacity: 0;
+      margin-top: 20px;
+      font-size: 1.1em;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 25px;
+      border-radius: 12px;
+      display: inline-block;
+      color: #fff;
+      animation: fadeIn 2s ease forwards;
+      z-index: 2;
+    }
+
+    /* Floating Photo Animation */
+    .photo {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.9;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      animation: moveAround 18s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes moveAround {
+      0%   { top: 10%; left: 10%; transform: rotate(0deg) scale(1); }
+      25%  { top: 15%; left: 70%; transform: rotate(5deg) scale(1.05); }
+      50%  { top: 65%; left: 60%; transform: rotate(-3deg) scale(0.95); }
+      75%  { top: 70%; left: 20%; transform: rotate(4deg) scale(1.05); }
+      100% { top: 10%; left: 10%; transform: rotate(0deg) scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      opacity: 0.8;
+      animation: fall 4s infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🎂 Main content -->
+  <img src="https://github.com/274maihassan-ops/HAPPY-BIRTHDAYY-/blob/main/4da3dd1537808a418f70afa55ef08b31.jpg?raw=true" alt="Birthday Person" class="photo" />
+
+  <h1>🎉 Happy Birthday!</h1>
+  <div class="coffee">☕</div>
+  <p>Wishing you a day full of laughter, good vibes, and lots of coffee 💙</p>
+  <button onclick="showNote()">Click for a little surprise</button>
+
+  <div id="note" class="note"></div>
+
+  <script>
+    function showNote() {
+      for (let i = 0; i < 80; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+      }
+
+      const note = document.getElementById("note");
+      const message = "Just wanted to make your day a little brighter ☕💙\nYou deserve all the good vibes today!";
+      let i = 0;
+      note.innerHTML = "";
+      note.style.opacity = 1;
+
+      const typing = setInterval(() => {
+        note.innerHTML += message[i];
+        i++;
+        if (i >= message.length) clearInterval(typing);
+      }, 50);
+    }
+  </script>
+</body>
+</html>
